@@ -1,22 +1,9 @@
-import { useEffect, useState } from "react";
-import { Card, CardTitle } from "./ui/card";
-import { invoke } from "@tauri-apps/api/core";
 import { Button } from "./ui/button";
 import { Moon, Sun } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 
 export default function HeadBar() {
-    const [theme,setTheme] = useState(false);
-    
-    async function themeChange() {
-        setTheme(await invoke("theme_change",{theme: !theme}))
-    }
-
-    useEffect(() => {
-        const root = window.document.documentElement
-        root.classList.remove("light","dark")
-        const themeMode = theme ? "dark" : "light"
-        root.classList.add(themeMode)
-    },[theme])
+    const {theme,themeChange} = useTheme();
 
     return (
         <nav className="relative fixed flex items-center justify-between rounded-lg border bg-muted p-3">
