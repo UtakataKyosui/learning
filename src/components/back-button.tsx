@@ -9,7 +9,9 @@ export default function BackButton() {
         {routerState.location.pathname !== "/" && <Link to="/" className={`${buttonVariants({
             variant: "secondary",
             size: "sm"
-        })} w-10 h-10`} viewTransition>
+        })} w-10 h-10`} viewTransition={{
+            types: 
+        }}>
             <MoveLeftIcon />
         </Link>}
     </div>
